@@ -404,6 +404,124 @@ dialog::backdrop {
   }
 }
 
+@media (min-width: 761px) and (max-width: 1120px) {
+  .app-shell {
+    padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .topbar p {
+    max-width: 560px;
+  }
+
+  .button,
+  .icon-button,
+  .tab,
+  .glyph-button,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(230px, 260px) minmax(470px, 1fr);
+    gap: 14px;
+  }
+
+  .sidebar {
+    padding: 14px;
+  }
+
+  .glyph-list {
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+    max-height: min(56vh, 520px);
+  }
+
+  .editor-panel {
+    min-height: 680px;
+  }
+
+  .editor-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+
+  .tool-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(70px, 1fr));
+    gap: 8px;
+  }
+
+  .icon-button {
+    min-width: 0;
+    width: 100%;
+    padding: 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .canvas-wrap {
+    padding: 14px;
+    max-height: min(72vh, 720px);
+  }
+
+  #glyphCanvas {
+    width: min(100%, 720px);
+    max-width: none;
+  }
+
+  .preview-panel {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(360px, 1.2fr);
+    gap: 14px;
+  }
+
+  .preview-block {
+    margin-bottom: 0;
+  }
+
+  .font-preview {
+    min-height: 150px;
+    margin-bottom: 0;
+  }
+
+  .export-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1120px) and (orientation: landscape) {
+  .workspace {
+    grid-template-columns: minmax(220px, 250px) minmax(460px, 1fr) minmax(250px, 320px);
+  }
+
+  .preview-panel {
+    grid-column: auto;
+    display: block;
+  }
+
+  .preview-block {
+    margin-bottom: 14px;
+  }
+
+  .font-preview {
+    min-height: 180px;
+    margin-bottom: 14px;
+  }
+
+  .export-card {
+    grid-column: auto;
+  }
+}
+
 @media (max-width: 760px) {
   html,
   body {

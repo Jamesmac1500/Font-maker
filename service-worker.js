@@ -1,11 +1,11 @@
-const CACHE_NAME = "pixel-font-maker-v6";
+const CACHE_NAME = "pixel-font-maker-v7";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=6",
-  "./app.js?v=6",
-  "./manifest.json?v=6",
-  "./icon.svg?v=6"
+  "./styles.css?v=7",
+  "./app.js?v=7",
+  "./manifest.json?v=7",
+  "./icon.svg?v=7"
 ];
 
 self.addEventListener("install", event => {
