@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#126c63">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Pixel Font">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Pixel Font Maker</title>
+    <link rel="manifest" href="manifest.json?v=6">
+    <link rel="icon" href="icon.svg?v=6" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.svg?v=6">
+    <link rel="stylesheet" href="styles.css?v=6">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>Pixel Font Maker</h1>
+          <p>Draw each character on a grid, preview words, then export an installable TrueType font.</p>
+        </div>
+        <div class="top-actions">
+          <button id="saveProject" class="button secondary" type="button" title="Save project JSON">Save</button>
+          <label class="button secondary file-button" title="Open project JSON">
+            Open
+            <input id="openProject" type="file" accept="application/json,.json">
+          </label>
+          <button id="exportFont" class="button primary" type="button" title="Export TTF font">Export TTF</button>
+          <button id="shareFont" class="button secondary share-only" type="button" title="Share TTF font">Share</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="sidebar" aria-label="Characters">
+          <div class="field">
+            <label for="fontName">Font name</label>
+            <input id="fontName" type="text" value="My Pixel Font" autocomplete="off">
+          </div>
+          <div class="field two-col">
+            <label for="gridSize">Grid</label>
+            <select id="gridSize">
+              <option value="8">8 x 8</option>
+              <option value="12">12 x 12</option>
+              <option value="16">16 x 16</option>
+              <option value="24">24 x 24</option>
+              <option value="32" selected>32 x 32</option>
+              <option value="48">48 x 48</option>
+              <option value="64">64 x 64</option>
+            </select>
+          </div>
+          <div class="glyph-tabs" role="tablist" aria-label="Character sets">
+            <button class="tab active" data-tab="letters" type="button">Letters</button>
+            <button class="tab" data-tab="numbers" type="button">Numbers</button>
+            <button class="tab" data-tab="punctuation" type="button">Marks</button>
+          </div>
+          <div id="glyphList" class="glyph-list"></div>
+          <button id="addGlyph" class="button secondary wide" type="button">Add Character</button>
+        </aside>
+
+        <section class="editor-panel" aria-label="Glyph editor">
+          <div class="editor-header">
+            <div>
+              <div class="eyebrow">Editing</div>
+              <div id="activeGlyphLabel" class="active-glyph">A</div>
+            </div>
+            <div class="tool-row" aria-label="Drawing tools">
+              <button id="drawTool" class="icon-button active" type="button" title="Draw filled pixels">Draw</button>
+              <button id="eraseTool" class="icon-button" type="button" title="Erase pixels">Erase</button>
+              <button id="undoEdit" class="icon-button" type="button" title="Undo last edit" disabled>Undo</button>
+              <button id="fillGlyph" class="icon-button" type="button" title="Fill glyph">Fill</button>
+              <button id="clearGlyph" class="icon-button danger" type="button" title="Clear glyph">Clear</button>
+            </div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="glyphCanvas" width="704" height="704" aria-label="Pixel drawing grid"></canvas>
+          </div>
+          <div class="editor-footer">
+            <label class="checkbox">
+              <input id="mirrorPreview" type="checkbox">
+              Mirror while drawing
+            </label>
+            <span id="cellReadout">32 x 32 cells</span>
+          </div>
+        </section>
+
+        <aside class="preview-panel" aria-label="Preview and export">
+          <div class="preview-block">
+            <label for="previewText">Preview text</label>
+            <textarea id="previewText" rows="4">Aa Bb Cc
+Hello, pixel font!</textarea>
+          </div>
+          <div id="fontPreview" class="font-preview" aria-live="polite"></div>
+          <div class="export-card">
+            <h2>Use the font</h2>
+            <p>Export the TTF, install it on your computer, then choose it by name in Word, Pages, Outlook, Gmail, or other apps that use installed fonts.</p>
+            <button id="exportFontSide" class="button primary wide" type="button">Export TTF</button>
+            <button id="downloadSample" class="button secondary wide" type="button">Export PNG Sample</button>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <dialog id="characterDialog">
+      <form method="dialog" class="dialog-card">
+        <h2>Add a character</h2>
+        <input id="newGlyphInput" maxlength="1" autocomplete="off" aria-label="Character to add">
+        <div class="dialog-actions">
+          <button value="cancel" class="button secondary" type="submit">Cancel</button>
+          <button id="confirmGlyph" value="default" class="button primary" type="submit">Add</button>
+        </div>
+      </form>
+    </dialog>
+
+    <nav class="mobile-dock" aria-label="Quick actions">
+      <button id="mobileDraw" class="dock-button active" type="button">Draw</button>
+      <button id="mobileErase" class="dock-button" type="button">Erase</button>
+      <button id="mobileUndo" class="dock-button" type="button" disabled>Undo</button>
+      <button id="mobileSave" class="dock-button" type="button">Save</button>
+      <button id="mobileExport" class="dock-button primary" type="button">Export</button>
+    </nav>
+
+    <script src="app.js?v=6"></script>
+  </body>
+</html>
